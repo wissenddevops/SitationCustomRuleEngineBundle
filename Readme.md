@@ -1,10 +1,14 @@
-Added a new Job in mass action to add comments to list of simple products you have selected in products page.
+rules:
+    ImageResize:
+        priority: 0
+        conditions:
+            - {field: family, operator: IN, value: [tops]}
+        actions:
+            - {type: imageoperation, field: image_2, attributes: [image_1],imageoperation:resize,width:500,height:500,imageextension:png,options: {scope: ~, locale: ~}}
+use above rules engine configuration place it in one file and import that file in akeneo dev box using this import function "ImportToYaml" and rules engine get created.
 
-Added a Menu Custom Settings inside main menu.
+before that please use below script to be run use it in root folder of project.
 
-Added a Custom dashboard Inside activities tab we will list products in that page.
-
-ACL(Access Control List) for Custom Dashboard And Custom Settings and shown in System menu and click on permissions tab and click on system there will be listing Custom Dashboard and Custom Settings
 
 Shell script running commands in root folder:
 
