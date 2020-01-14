@@ -1,0 +1,4 @@
+config:
+    paths:
+        pim/product-edit-form/image-manipulation: sitationcustomruleengine/js/controller/imagemanipulation
+        pim/product-edit-form/template/image-manipulation:  sitationcustomruleengine/template/imagemanipulation.html

@@ -1,0 +1,21 @@
+rules:
+    test_pattern:
+        priority: 0
+        conditions:
+            -
+                field: family
+                operator: IN
+                value:
+                    - camcorders
+        actions:
+            -
+                type: pattern
+                field: description
+                attributes:
+                    - name
+                    - price
+                    - total_megapixels
+                pattern: '%%name%% -- %%price%% -- %%total_megapixels%%'
+                options:
+                    scope: ecommerce
+                    locale: en_US

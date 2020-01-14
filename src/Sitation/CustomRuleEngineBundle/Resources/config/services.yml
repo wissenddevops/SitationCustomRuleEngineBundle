@@ -1,0 +1,44 @@
+services:
+#    sitation_custom_rule_engine.example:
+#        class: Sitation\CustomRuleEngineBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    sitation.action_applier.pattern:
+        class: Sitation\CustomRuleEngineBundle\ActionApplier\PatternActionApplier
+        arguments:
+            - '@pim_catalog.updater.property_setter'
+        tags:
+            - { name: akeneo_rule_engine.action_applier, priority: 100 }
+
+    sitation.denormalizer.product_rule.pattern_action:
+        class: Sitation\CustomRuleEngineBundle\Denormalizer\ProductRule\PatternActionDenormalizer
+        tags:
+            - { name: 'pimee_catalog_rule.denormalizer.product_rule' }
+
+    sitation.validator.existing_attributes:
+        class: Sitation\CustomRuleEngineBundle\Validator\Constraints\ExistingAttributesValidator
+        arguments:
+            - '@pim_catalog.repository.attribute'
+        tags:
+            - { name: validator.constraint_validator, alias: pimee_constraint_attributes_validator }
+
+    sitation.rulesengine.defaultcontroller:
+        class: Sitation\CustomRuleEngineBundle\Controller\DefaultController
+        arguments:
+            - '@pim_catalog.updater.property_setter'
+            - '@Psr\Log\LoggerInterface'
+            - '@akeneo_file_storage.file_storage.file.file_storer'
+
+    sitation.action_applier.imageoperation:
+        class: Sitation\CustomRuleEngineBundle\ActionApplier\ImageOperationActionApplier
+        arguments:
+            - '@pim_catalog.updater.property_setter'
+            - '@Psr\Log\LoggerInterface'
+            - '%catalog_storage_dir%'
+            - '@akeneo_file_storage.file_storage.file.file_storer'
+        tags:
+            - { name: akeneo_rule_engine.action_applier, priority: 100 }
+
+    sitation.denormalizer.product_rule.imageoperation_action:
+        class: Sitation\CustomRuleEngineBundle\Denormalizer\ProductRule\ImageOperationActionDenormalizer
+        tags:
+            - { name: 'pimee_catalog_rule.denormalizer.product_rule' }

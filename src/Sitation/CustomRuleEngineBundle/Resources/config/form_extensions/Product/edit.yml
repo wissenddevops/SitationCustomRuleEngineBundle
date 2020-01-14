@@ -1,0 +1,6 @@
+extensions:
+    pim-product-image-upload-updated:
+        module: pim/product-edit-form/image-manipulation
+        parent: pim-product-edit-form-attributes
+        targetZone: self
+        position: 100

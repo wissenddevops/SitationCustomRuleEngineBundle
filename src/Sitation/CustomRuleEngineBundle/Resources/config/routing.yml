@@ -1,0 +1,8 @@
+sitation_custom_rule_engine_homepage:
+    path:     /
+    defaults: { _controller: sitation.rulesengine.defaultcontroller:indexAction }
+    #methods: [GET]
+
+sitation_custom_rule_enginee_imagenamipulation:
+    path:     /imagemanipulation
+    defaults: { _controller: sitation.rulesengine.defaultcontroller:doImageConversion }
